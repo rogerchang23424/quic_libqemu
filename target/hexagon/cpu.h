@@ -36,6 +36,8 @@
 #ifndef CONFIG_USER_ONLY
 #include "reg_fields.h"
 typedef struct CPUHexagonTLBContext CPUHexagonTLBContext;
+typedef struct HexagonGlobalRegState HexagonGlobalRegState;
+typedef struct HexagonTLBState HexagonTLBState;
 #endif
 
 #define NUM_PREGS 4
@@ -142,7 +144,6 @@ typedef struct CPUArchState {
     hex_lock_state_t k0_lock_state;
     target_ulong tlb_lock_count;
     target_ulong k0_lock_count;
-    CPUHexagonTLBContext *hex_tlb;
     GList *dir_list;
 #endif
     target_ulong next_PC;
@@ -199,8 +200,9 @@ struct ArchCPU {
     uint32_t l2vic_base_addr;
     uint32_t hvx_contexts;
     uint32_t boot_addr;
-    struct HexagonGlobalRegState *globalregs;
+    HexagonGlobalRegState *globalregs;
     gchar *usefs;
+    HexagonTLBState *tlb;
 #endif
 };
 
