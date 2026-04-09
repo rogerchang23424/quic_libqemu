@@ -157,7 +157,6 @@ static void hexagon_common_init(MachineState *machine, Rev_t rev,
                              m_cfg->cfgtable.ext_contexts);
         qdev_prop_set_uint32(DEVICE(cpu), "jtlb-entries",
                              m_cfg->cfgtable.jtlb_size_entries);
-        qdev_prop_set_uint32(DEVICE(cpu), "l2vic-base-addr", m_cfg->l2vic_base);
         qdev_prop_set_bit(DEVICE(cpu), "sched-limit", true);
         object_property_set_link(OBJECT(cpu), "global-regs",
                                  OBJECT(glob_regs_dev), &error_fatal);
